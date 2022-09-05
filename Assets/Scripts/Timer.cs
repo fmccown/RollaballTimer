@@ -20,10 +20,9 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float t = totalSeconds - Time.time - startTime;
-        string seconds = (t % 60).ToString("f1");
+        float timeRemaining = totalSeconds - Time.time - startTime;
 
-        if (t <= 0)
+        if (timeRemaining <= 0)
         {
             //GameObject.Find("Player").SendMessage("NoMoreTime");
             //player.SendMessage("NoMoreTime");
@@ -31,6 +30,7 @@ public class Timer : MonoBehaviour
         }
         else
         {
+            string seconds = (timeRemaining % 60).ToString("f1");
             timerText.SetText(seconds);
         }        
     }
