@@ -9,18 +9,19 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timerText;
     public int totalSeconds = 12;
 
-    private float startTime;
+    private float elapsedTime = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        startTime = Time.time;
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        float timeRemaining = totalSeconds - Time.time - startTime;
+        elapsedTime += Time.deltaTime;
+        float timeRemaining = totalSeconds - elapsedTime;
 
         if (timeRemaining <= 0)
         {
@@ -34,5 +35,4 @@ public class Timer : MonoBehaviour
             timerText.SetText(seconds);
         }        
     }
-
 }
